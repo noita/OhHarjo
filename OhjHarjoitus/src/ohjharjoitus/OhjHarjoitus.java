@@ -1,16 +1,13 @@
 
 package ohjharjoitus;
 
-/**
- *
- * @author O
- */
-public class OhjHarjoitus {
+import javax.swing.*;
 
-    /**
-     * @param args the command line arguments
-     */
+public class OhjHarjoitus {
+    
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        StrategiaPeli peli = new StrategiaPeli();
+        SwingUtilities.invokeLater(peli);
     }
 }
