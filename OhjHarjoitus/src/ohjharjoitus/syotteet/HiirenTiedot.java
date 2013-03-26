@@ -1,12 +1,13 @@
 
-package ohjharjoitus;
+package ohjharjoitus.syotteet;
 
 import java.awt.event.*;
+import ohjharjoitus.StrategiaPeli;
 
 public class HiirenTiedot implements MouseListener{
     private StrategiaPeli peli;
     
-    HiirenTiedot(StrategiaPeli peli){
+    public HiirenTiedot(StrategiaPeli peli){
         this.peli = peli;
     }
 
@@ -21,8 +22,6 @@ public class HiirenTiedot implements MouseListener{
         if (y>350) y = 350;
         if (y<0) y = 0;
         
-        peli.grafiikka.viimSijainti[0] = x;
-        peli.grafiikka.viimSijainti[1] = y;
         
         //lisätään uusi elementti, päivitetään grafiikka
         peli.lisaaPommi(x, y);

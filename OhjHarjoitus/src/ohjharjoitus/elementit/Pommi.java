@@ -1,5 +1,5 @@
 
-package ohjharjoitus;
+package ohjharjoitus.elementit;
 
 
 public class Pommi {

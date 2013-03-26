@@ -1,7 +1,9 @@
-package ohjharjoitus;
+
+package ohjharjoitus.syotteet;
 
 import java.awt.event.*;
 import javax.swing.*;
+import ohjharjoitus.StrategiaPeli;
 
 public class ValikonKuuntelija implements ActionListener{
     StrategiaPeli peli;

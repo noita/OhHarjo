@@ -3,7 +3,9 @@
  * and open the template in the editor.
  */
 
-import ohjharjoitus.Pommi;
+import ohjharjoitus.elementit.Kohde;
+import ohjharjoitus.elementit.Pommi;
+import ohjharjoitus.elementit.Seuraaja;
 import ohjharjoitus.StrategiaPeli;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,6 +41,8 @@ public class StrategiaPeliTest {
     @After
     public void tearDown() {
     }
+    
+    ////////////////////////////////////////////////////////////////////////////
     
     @Test
     public void alustetaanOikeaMaaraKohteita(){
@@ -82,8 +86,8 @@ public class StrategiaPeliTest {
         peli.pommit.clear();
         peli.lisaaPommi(-10,-20);
         Pommi p = peli.pommit.get(0);
-        assertEquals(-40,p.sijaintiX);
-        assertEquals(-40,p.sijaintiY);
+        assertEquals(-20,p.sijaintiX);
+        assertEquals(-20,p.sijaintiY);
     }
     
     @Test
@@ -91,8 +95,8 @@ public class StrategiaPeliTest {
         peli.pommit.clear();
         peli.lisaaPommi(543,2345);
         Pommi p = peli.pommit.get(0);
-        assertEquals(310,p.sijaintiX);
-        assertEquals(310,p.sijaintiY);
+        assertEquals(330,p.sijaintiX);
+        assertEquals(330,p.sijaintiY);
     }
     
     @Test
@@ -106,5 +110,53 @@ public class StrategiaPeliTest {
         peli.alustaTestiTaso();
         assertEquals(15,peli.kohteet.size());
     }
+    //1
+    @Test
+    public void alustetaanOikeaLkmSeur(){
+        peli.luoSeuraajat(34);
+        assertEquals(34,peli.seuraajat.size());
+    }
     
+    @Test
+    public void seuraajienLuontiNegSyote(){
+        peli.luoSeuraajat(-12);
+        assertEquals(0,peli.seuraajat.size());
+    }
+    
+    @Test 
+    public void pomminLisaysSeurPaalle(){
+        peli.seuraajat.add(new Seuraaja(150, 150));
+        peli.lisaaPommi(150, 150);
+        assertEquals(0,peli.pommit.size());
+    }
+    
+    @Test 
+    public void pomminLisaysSeurLahelle(){
+        peli.seuraajat.add(new Seuraaja(150, 150));
+        peli.lisaaPommi(153, 149);
+        assertEquals(0,peli.pommit.size());
+    }
+    
+    @Test 
+    public void tyhjanRajaytys(){
+        peli.luoKohteet(1);
+        peli.rajayta();
+        assertEquals("no charges placed!",peli.tilanne.getText());
+    }
+    
+    @Test
+    public void rajaytysPaivitys(){
+        peli.kohteet.add(new Kohde(1,1));
+        peli.lisaaPommi(150, 150);
+        peli.rajayta();
+        assertEquals("charges detonated!",peli.tilanne.getText());
+    }
+    
+    @Test
+    public void rajaytysPaivitysOsuma(){
+        peli.kohteet.add(new Kohde(150,150));
+        peli.lisaaPommi(150, 150);
+        peli.rajayta();
+        assertEquals("all targets cleared!",peli.tilanne.getText());
+    }
 }
