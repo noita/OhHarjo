@@ -7,7 +7,7 @@ public class OhjHarjoitus {
     
 
     public static void main(String[] args) {
-        StrategiaPeli peli = new StrategiaPeli();
+        Strategiapeli peli = new Strategiapeli();
         SwingUtilities.invokeLater(peli);
     }
 }

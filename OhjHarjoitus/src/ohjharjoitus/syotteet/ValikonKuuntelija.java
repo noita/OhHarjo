@@ -3,12 +3,12 @@ package ohjharjoitus.syotteet;
 
 import java.awt.event.*;
 import javax.swing.*;
-import ohjharjoitus.StrategiaPeli;
+import ohjharjoitus.Strategiapeli;
 
 public class ValikonKuuntelija implements ActionListener{
-    StrategiaPeli peli;
+    Strategiapeli peli;
     
-    public ValikonKuuntelija(StrategiaPeli peli){
+    public ValikonKuuntelija(Strategiapeli peli){
         this.peli = peli;
     }
     
@@ -19,6 +19,13 @@ public class ValikonKuuntelija implements ActionListener{
         }
         if (valinta.equals("New Game")){
             //alusta uusi peli
+            peli.yhtPisteet.nollaaPisteet();
+            peli.nykyinenTaso = 1;
+            peli.nykyinenPeli = "perustasot";
+            peli.alustaTaso("perustasot", 1);
+        }
+        if (valinta.equals("Load stages")){
+            peli.pyydaTaso();
         }
     }
 }

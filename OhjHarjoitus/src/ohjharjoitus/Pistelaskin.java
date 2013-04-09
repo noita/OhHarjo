@@ -1,7 +1,11 @@
 
 package ohjharjoitus;
 
-
+/**
+ * Tuloslaskin, lisää ja vähentää pisteitä.
+ * 
+ * @author O
+ */
 public class Pistelaskin {
     int rajoitus;
     int pisteet;
@@ -23,5 +27,9 @@ public class Pistelaskin {
     
     public int getPisteet() {
         return pisteet;
+    }
+    
+    public void nollaaPisteet() {
+        pisteet = 0;
     }
 }

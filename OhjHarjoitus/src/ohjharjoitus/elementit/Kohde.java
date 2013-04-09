@@ -2,9 +2,9 @@
 package ohjharjoitus.elementit;
 
 public class Kohde {
-    public int sijaintiX;
-    public int sijaintiY;
-    public boolean tuhottu = false;
+    int sijaintiX;
+    int sijaintiY;
+    boolean tuhottu = false;
     
     public Kohde(int x, int y){
         sijaintiX = x-2;
@@ -17,5 +17,21 @@ public class Kohde {
     
     public void asetaY(int y){
         sijaintiY = y-2;
+    }
+    
+    public int getX() {
+        return sijaintiX;
+    }
+    
+    public int getY() {
+        return sijaintiY;
+    }
+    
+    public boolean tuhottu() {
+        return tuhottu;
+    }
+    
+    public void tuhoa() {
+        tuhottu = true;
     }
 }

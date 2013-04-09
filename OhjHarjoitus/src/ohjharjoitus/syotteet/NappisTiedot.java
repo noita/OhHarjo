@@ -2,15 +2,27 @@
 package ohjharjoitus.syotteet;
 
 import java.awt.event.*;
-import ohjharjoitus.StrategiaPeli;
+import ohjharjoitus.Strategiapeli;
 
+/**
+ * Kuuntelee näppäimistötapahtumia.
+ * 
+ * @author O
+ */
 public class NappisTiedot implements KeyListener{
-    private StrategiaPeli peli;
+    private Strategiapeli peli;
 
-    public NappisTiedot(StrategiaPeli peli) {
+    public NappisTiedot(Strategiapeli peli) {
         this.peli = peli;
     }
     
+    /**
+     * Räjäyttää pommit mikäli painettu näppäin on 'a'.
+     * 
+     * @see ohjharjoitus.Strategiapeli#rajayta() 
+     * 
+     * @param ke näppäimistötapahtuma
+     */
     public void keyPressed(KeyEvent ke) {
         char merkki = ke.getKeyChar();
         if (merkki == 'a'){
