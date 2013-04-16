@@ -15,7 +15,7 @@ public class Pistelaskin {
         pisteet = 0;
     }
     
-    //negatiiviset pisteet ovat tarkoituksella mahdollisia!
+    //negatiiviset yht. pisteet ovat tarkoituksella mahdollisia!
     //case: not a bug; a feature
     public void vahenna(int x) {
         pisteet -= x;

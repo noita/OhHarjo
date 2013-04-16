@@ -44,7 +44,7 @@ public class Grafiikka extends Canvas{
         
         for (Seuraaja s : peli.seuraajat){
             g.setColor(Color.YELLOW);
-            g.drawOval(s.getX(), s.getY(), 6, 6);
+            g.drawOval(s.getX()-4, s.getY()-4, 8, 8);
         }
         
         for (Viiva v : peli.viivat){
@@ -55,10 +55,10 @@ public class Grafiikka extends Canvas{
         for (Kohde k : peli.kohteet){
             if (k.tuhottu()){
                 g.setColor(Color.MAGENTA);
-                g.drawOval(k.getX(), k.getY(), 4, 4);
+                g.drawOval(k.getX()-2, k.getY()-2, 4, 4);
             } else {
                 g.setColor(Color.GREEN);
-                g.drawOval(k.getX(), k.getY(), 4, 4);
+                g.drawOval(k.getX()-2, k.getY()-2, 4, 4);
             }
         }
         

@@ -7,16 +7,16 @@ public class Kohde {
     boolean tuhottu = false;
     
     public Kohde(int x, int y){
-        sijaintiX = x-2;
-        sijaintiY = y-2;
+        sijaintiX = x;
+        sijaintiY = y;
     }
     
     public void asetaX(int x){
-        sijaintiX = x-2;
+        sijaintiX = x;
     }
     
     public void asetaY(int y){
-        sijaintiY = y-2;
+        sijaintiY = y;
     }
     
     public int getX() {

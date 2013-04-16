@@ -9,10 +9,10 @@ import ohjharjoitus.Strategiapeli;
  * 
  * @author O
  */
-public class NappisTiedot implements KeyListener{
+public class NappisKuuntelija implements KeyListener{
     private Strategiapeli peli;
 
-    public NappisTiedot(Strategiapeli peli) {
+    public NappisKuuntelija(Strategiapeli peli) {
         this.peli = peli;
     }
     

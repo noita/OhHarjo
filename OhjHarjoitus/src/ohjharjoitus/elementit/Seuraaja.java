@@ -7,8 +7,8 @@ public class Seuraaja {
     int sijaintiY;
     
     public Seuraaja(int x, int y){
-        sijaintiX = x-3;
-        sijaintiY = y-3;
+        sijaintiX = x;
+        sijaintiY = y;
     }
     
     public int getX() {

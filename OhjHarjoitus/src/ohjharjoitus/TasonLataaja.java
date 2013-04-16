@@ -11,12 +11,12 @@ import ohjharjoitus.elementit.Seuraaja;
  * 
  * @author O
  */
-public class TasonLataus {
+public class TasonLataaja {
     Strategiapeli peli;
     ArrayList<Kohde> kohteita = new ArrayList<Kohde>();
     ArrayList<Seuraaja> seuraajia = new ArrayList<Seuraaja>();
     
-    public TasonLataus(Strategiapeli p) {
+    public TasonLataaja(Strategiapeli p) {
         peli = p;
     }
     

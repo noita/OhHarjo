@@ -2,8 +2,8 @@
 package ohjharjoitus;
 
 import ohjharjoitus.syotteet.ValikonKuuntelija;
-import ohjharjoitus.syotteet.NappisTiedot;
-import ohjharjoitus.syotteet.HiirenTiedot;
+import ohjharjoitus.syotteet.NappisKuuntelija;
+import ohjharjoitus.syotteet.HiirenKuuntelija;
 import ohjharjoitus.kayttoliittyma.Grafiikka;
 import ohjharjoitus.elementit.Seuraaja;
 import ohjharjoitus.elementit.Kohde;
@@ -22,8 +22,8 @@ import java.util.*;
  */
 public class Strategiapeli implements Runnable {
     private JFrame ikkuna;
-    private NappisTiedot nappis = new NappisTiedot(this);
-    private TasonLataus lataaja = new TasonLataus(this);
+    private NappisKuuntelija nappis = new NappisKuuntelija(this);
+    private TasonLataaja lataaja = new TasonLataaja(this);
     public JLabel tilanne = new JLabel("click to begin");
     public Grafiikka grafiikka = new Grafiikka();
     public ArrayList<Kohde> kohteet = new ArrayList<Kohde>();
@@ -48,7 +48,7 @@ public class Strategiapeli implements Runnable {
         luoValikko();
         
         grafiikka.peli = this;
-        grafiikka.addMouseListener(new HiirenTiedot(this));
+        grafiikka.addMouseListener(new HiirenKuuntelija(this));
         
         luoAlkutilanne();
         
@@ -103,9 +103,9 @@ public class Strategiapeli implements Runnable {
     /**
      * Kysyy käyttäjältä ladattavien tasojen tiedostonimeä dialogi-ikkunan kautta.
      * 
-     * @see ohjharjoitus.TasonLataus#lataaUudetKohteet(java.lang.String, int) 
+     * @see ohjharjoitus.TasonLataaja#lataaUudetKohteet(java.lang.String, int) 
      * 
-     * @see ohjharjoitus.TasonLataus#lataaUudetSeur(java.lang.String, int) 
+     * @see ohjharjoitus.TasonLataaja#lataaUudetSeur(java.lang.String, int) 
      */
     public void pyydaTaso() {
         String tasot = JOptionPane.showInputDialog(ikkuna, "Which stages?");
@@ -138,9 +138,9 @@ public class Strategiapeli implements Runnable {
      * 
      * @see ohjharjoitus.Strategiapeli#paivitaTilanne(java.lang.String) 
      * 
-     * @see ohjharjoitus.TasonLataus#lataaUudetKohteet(java.lang.String, int) 
+     * @see ohjharjoitus.TasonLataaja#lataaUudetKohteet(java.lang.String, int) 
      * 
-     * @see ohjharjoitus.TasonLataus#lataaUudetSeur(java.lang.String, int) 
+     * @see ohjharjoitus.TasonLataaja#lataaUudetSeur(java.lang.String, int) 
      * 
      */
     public void alustaTestiTaso() {
@@ -164,9 +164,9 @@ public class Strategiapeli implements Runnable {
      * 
      * @see ohjharjoitus.Strategiapeli#paivitaTilanne(java.lang.String)
      * 
-     * @see ohjharjoitus.TasonLataus#lataaUudetKohteet(java.lang.String, int) 
+     * @see ohjharjoitus.TasonLataaja#lataaUudetKohteet(java.lang.String, int) 
      * 
-     * @see ohjharjoitus.TasonLataus#lataaUudetSeur(java.lang.String, int) 
+     * @see ohjharjoitus.TasonLataaja#lataaUudetSeur(java.lang.String, int) 
      * 
      * @param n ladattavan tason numero
      */
@@ -257,7 +257,7 @@ public class Strategiapeli implements Runnable {
                     y = p.getY()-3 + p.getD()/2;
                 }
                 //törmätessä pommi poistetaan:
-                if (etaisyys <= 30){
+                if (etaisyys <= 40){
                     pommit.remove(p);
                     tasonPisteet.vahenna(2);
                     break;
@@ -269,14 +269,14 @@ public class Strategiapeli implements Runnable {
             
             //liikkeen suunta
             if (x <= s.getX()){
-                s.setX(s.getX() - Math.min(20, s.getX()-x));
+                s.setX(s.getX() - Math.min(30, s.getX()-x));
             } else {
-                s.setX(s.getX() + Math.min(20, x-s.getX()));
+                s.setX(s.getX() + Math.min(30, x-s.getX()));
             }
             if (y <= s.getY()){
-                s.setY(s.getY() - Math.min(20, s.getY()-y));
+                s.setY(s.getY() - Math.min(30, s.getY()-y));
             } else {
-                s.setY(s.getY() + Math.min(20, y-s.getY()));
+                s.setY(s.getY() + Math.min(30, y-s.getY()));
             }
             
             //sijainti liikkeen jälkeen
@@ -339,9 +339,13 @@ public class Strategiapeli implements Runnable {
             rajaytykset = 0;
             kombo = 0;
             yhtPisteet.lisaa(tasonPisteet.getPisteet());
-            nykyinenTaso++;
             paivitaTilanne("click to continue");
         }
+    }
+    
+    public void seuraavaTaso(){
+        nykyinenTaso++;
+        alustaTaso(nykyinenPeli, nykyinenTaso);
     }
         
     /**

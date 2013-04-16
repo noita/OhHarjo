@@ -9,10 +9,10 @@ import ohjharjoitus.Strategiapeli;
  * 
  * @author O
  */
-public class HiirenTiedot implements MouseListener{
+public class HiirenKuuntelija implements MouseListener{
     private Strategiapeli peli;
     
-    public HiirenTiedot(Strategiapeli peli){
+    public HiirenKuuntelija(Strategiapeli peli){
         this.peli = peli;
     }
     
@@ -37,7 +37,7 @@ public class HiirenTiedot implements MouseListener{
         
         if(peli.tilanne.getText().equals("click to continue")){
             //seuraava taso
-            peli.alustaTaso(peli.nykyinenPeli, peli.nykyinenTaso);
+            peli.seuraavaTaso();
         } else if (peli.tilanne.getText().equals("nope.")){
             //ei mitn.
         } else {
