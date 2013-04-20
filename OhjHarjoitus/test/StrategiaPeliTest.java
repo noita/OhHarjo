@@ -64,7 +64,7 @@ public class StrategiaPeliTest {
     @Test
     public void tilannePaivittyyOikein(){
         peli.paivitaTilanne("Lorem Ipsum");
-        assertEquals("Lorem Ipsum",peli.tilanne.getText());
+        assertEquals(2, peli.pelitilanne());
     }
     
     @Test
@@ -142,7 +142,7 @@ public class StrategiaPeliTest {
     public void tyhjanRajaytys(){
         peli.luoSatunnaisetKohteet(1);
         peli.rajayta();
-        assertEquals("no charges placed!",peli.tilanne.getText());
+        assertEquals(2, peli.pelitilanne());
     }
     
     @Test
@@ -150,7 +150,7 @@ public class StrategiaPeliTest {
         peli.kohteet.add(new Kohde(1,1));
         peli.lisaaPommi(150, 150);
         peli.rajayta();
-        assertEquals("charges detonated!",peli.tilanne.getText());
+        assertEquals(2, peli.pelitilanne());
     }
     
     @Test
@@ -158,18 +158,24 @@ public class StrategiaPeliTest {
         peli.kohteet.add(new Kohde(150,150));
         peli.lisaaPommi(150, 150);
         peli.rajayta();
-        assertEquals("click to continue",peli.tilanne.getText());
+        assertEquals(0, peli.pelitilanne());
     }
     
     @Test
     public void liianKorkeaTaso(){
         peli.alustaTaso("perustasot", 99);
-        assertEquals("nope.",peli.tilanne.getText());
+        assertEquals(1, peli.pelitilanne());
     }
     
     @Test
     public void negTasonumero(){
         peli.alustaTaso("perustasot", -1);
-        assertEquals("nope.", peli.tilanne.getText());
+        assertEquals(1, peli.pelitilanne());
+    }
+    
+    @Test
+    public void varitPalautuvatOikein(){
+        peli.vaihdaVarit();
+        assertEquals(4, peli.getVarit().size());
     }
 }

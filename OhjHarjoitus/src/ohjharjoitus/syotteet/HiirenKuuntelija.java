@@ -35,10 +35,11 @@ public class HiirenKuuntelija implements MouseListener{
         if (y>350) y = 350;
         if (y<0) y = 0;
         
-        if(peli.tilanne.getText().equals("click to continue")){
-            //seuraava taso
+        int tilanne = peli.pelitilanne();
+        
+        if(tilanne == 0){
             peli.seuraavaTaso();
-        } else if (peli.tilanne.getText().equals("nope.")){
+        } else if (tilanne == 1){
             //ei mitn.
         } else {
             //lisätään uusi elementti, päivitetään grafiikka

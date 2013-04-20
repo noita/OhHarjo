@@ -6,6 +6,7 @@ import ohjharjoitus.elementit.Kohde;
 import ohjharjoitus.elementit.Pommi;
 import ohjharjoitus.elementit.Viiva;
 import java.awt.*;
+import java.util.*;
 import ohjharjoitus.Strategiapeli;
 
 /**
@@ -15,6 +16,7 @@ import ohjharjoitus.Strategiapeli;
  */
 public class Grafiikka extends Canvas{
     public Strategiapeli peli;
+    private ArrayList<Color> varit = new ArrayList<Color>();
 
     
     public Grafiikka(){
@@ -27,9 +29,12 @@ public class Grafiikka extends Canvas{
      * @param g Grafiikka elementti
      */
     public void paint(Graphics g){
-        g.setColor(Color.GREEN);
+        uudetVarit();
+        g.setColor(varit.get(3));
         
-        if (peli.tilanne.getText().equals("click to continue")){
+        int tilanne = peli.pelitilanne();
+        
+        if (tilanne == 0){
             //helvetin ruma!!!!
             g.drawString("stage cleared", 125, 70);
             g.drawString("stage score: " + peli.tasonPisteet.getPisteet(), 125, 90);
@@ -43,25 +48,32 @@ public class Grafiikka extends Canvas{
         }
         
         for (Seuraaja s : peli.seuraajat){
-            g.setColor(Color.YELLOW);
+            g.setColor(varit.get(1));
             g.drawOval(s.getX()-4, s.getY()-4, 8, 8);
         }
         
         for (Viiva v : peli.viivat){
-            g.setColor(Color.YELLOW);
+            g.setColor(varit.get(1));
             g.drawLine(v.getX1(), v.getY1(), v.getX2(), v.getY2());
         }
         
         for (Kohde k : peli.kohteet){
             if (k.tuhottu()){
-                g.setColor(Color.MAGENTA);
+                g.setColor(varit.get(2));
                 g.drawOval(k.getX()-2, k.getY()-2, 4, 4);
             } else {
-                g.setColor(Color.GREEN);
+                g.setColor(varit.get(3));
                 g.drawOval(k.getX()-2, k.getY()-2, 4, 4);
             }
         }
         
         }
+    }
+    
+    /**
+     * Hakee uudet värit käytettäviksi.
+     */
+    public void uudetVarit(){
+        varit = peli.getVarit();
     }
 }

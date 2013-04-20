@@ -20,8 +20,8 @@ public class ValikonKuuntelija implements ActionListener{
         if (valinta.equals("New Game")){
             //alusta uusi peli
             peli.yhtPisteet.nollaaPisteet();
-            peli.nykyinenTaso = 1;
-            peli.nykyinenPeli = "perustasot";
+            peli.setNykyinenTaso(1);
+            peli.setNykyinenPeli("perustasot");
             peli.alustaTaso("perustasot", 1);
         }
         if (valinta.equals("Load stages")){

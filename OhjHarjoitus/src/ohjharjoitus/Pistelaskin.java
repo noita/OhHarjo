@@ -7,11 +7,9 @@ package ohjharjoitus;
  * @author O
  */
 public class Pistelaskin {
-    int rajoitus;
     int pisteet;
     
-    public Pistelaskin(int raja) {
-        rajoitus = raja;
+    public Pistelaskin() {
         pisteet = 0;
     }
     

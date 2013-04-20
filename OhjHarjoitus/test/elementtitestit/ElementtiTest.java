@@ -50,14 +50,14 @@ public class ElementtiTest {
     @Test
     public void seuraajaAsettaaOikein(){
         Seuraaja s =  new Seuraaja(10,10);
-        assertEquals(7, s.getX());
-        assertEquals(7, s.getY());
+        assertEquals(10, s.getX());
+        assertEquals(10, s.getY());
     }
 
     @Test
     public void kohdeAsettaaOikein(){
         Kohde k = new Kohde(100,100);
-        assertEquals(98, k.getX());
-        assertEquals(98, k.getY());
+        assertEquals(100, k.getX());
+        assertEquals(100, k.getY());
     }
 }

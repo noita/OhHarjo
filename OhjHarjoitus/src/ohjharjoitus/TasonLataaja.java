@@ -37,7 +37,7 @@ public class TasonLataaja {
             }
             lkm = Integer.parseInt(rivi);
         } catch (Exception e){
-            System.out.println("joku kämmi; lkm: " + e.toString());
+            //System.out.println("joku kämmi; lkm: " + e.toString());
         }
         return lkm-1;
     }
@@ -53,7 +53,7 @@ public class TasonLataaja {
      */
     public ArrayList<Kohde> lataaUudetKohteet(String tiedosto, int monesko) {
         kohteita.clear();
-        String sana = "jotain";
+        String sana = "";
         try {
             Scanner luku = new Scanner(new File(tiedosto + ".txt"));
             while (!sana.equals("Taso " + monesko)){
@@ -66,7 +66,7 @@ public class TasonLataaja {
                 sana = luku.nextLine();
             }
         } catch (Exception e){
-            System.out.println("joku kämmi; kohteet: " + e.toString());
+            //System.out.println("joku kämmi; kohteet: " + e.toString());
         }
         return kohteita;
     }
@@ -98,7 +98,7 @@ public class TasonLataaja {
                 sana = luku.nextLine();
             }
         } catch (Exception e){
-            System.out.println("joku kämmi; seuraajat: " + e.toString());
+            //System.out.println("joku kämmi; seuraajat: " + e.toString());
         }
         return seuraajia;
     }
@@ -117,7 +117,7 @@ public class TasonLataaja {
             }
             raja = luku.nextInt();
         } catch (Exception e){
-            System.out.println("joku kämmi; raja: " + e.toString());
+            //System.out.println("joku kämmi; raja: " + e.toString());
         }
         return raja;
     }

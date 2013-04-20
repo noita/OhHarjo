@@ -21,30 +21,32 @@ import java.util.*;
  * @author O
  */
 public class Strategiapeli implements Runnable {
-    private JFrame ikkuna;
+    private JFrame ikkuna = new JFrame("A Game");
     private NappisKuuntelija nappis = new NappisKuuntelija(this);
     private TasonLataaja lataaja = new TasonLataaja(this);
-    public JLabel tilanne = new JLabel("click to begin");
+    private ArrayList<Color> varit= new ArrayList<Color>();
+    private Varinarpoja varinArpoja = new Varinarpoja(this);
+    private JLabel tilanne = new JLabel("click to begin");
     public Grafiikka grafiikka = new Grafiikka();
     public ArrayList<Kohde> kohteet = new ArrayList<Kohde>();
     public ArrayList<Pommi> pommit = new ArrayList<Pommi>();
     public ArrayList<Seuraaja> seuraajat = new ArrayList<Seuraaja>();
     public ArrayList<Viiva> viivat = new ArrayList<Viiva>();
-    public Pistelaskin yhtPisteet = new Pistelaskin(666);
-    public Pistelaskin tasonPisteet = new Pistelaskin(666);
-    public int nykyinenTaso;
-    public String nykyinenPeli = "perustasot";
-    int rajaytykset = 0;
-    int kombo = 0;
+    public Pistelaskin yhtPisteet = new Pistelaskin();
+    public Pistelaskin tasonPisteet = new Pistelaskin();
+    private int nykyinenRaja;
+    private int nykyinenTaso;
+    private String nykyinenPeli = "perustasot";
+    private int rajaytykset = 0;
+    private int kaytetyt = 0;
     
     
     public void run() {
-        ikkuna = new JFrame("Some kinda Game"); 
         ikkuna.setPreferredSize(new Dimension(350, 410));
         ikkuna.setResizable(false);
-        ikkuna.setBackground(Color.BLACK);
         ikkuna.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
+        vaihdaVarit();
         luoValikko();
         
         grafiikka.peli = this;
@@ -62,15 +64,10 @@ public class Strategiapeli implements Runnable {
         pohja.setLayout(new BoxLayout(pohja, BoxLayout.Y_AXIS));
         
         tilanne.setAlignmentX(Component.CENTER_ALIGNMENT);
-        tilanne.setForeground(Color.GREEN);
-        
-        
+                
         //alustetaan ensim. taso
-        nykyinenTaso = 1;
+        setNykyinenTaso(1);
         alustaTaso(nykyinenPeli, nykyinenTaso);
-        //testitaso
-        //alustaTestiTaso();
-        
         
         pohja.add(grafiikka);
         pohja.add(tilanne);
@@ -100,6 +97,40 @@ public class Strategiapeli implements Runnable {
         
         ikkuna.setJMenuBar(valikko);
     }
+    
+    /**
+     * Hakee uudet käyttöliittymässä käytettävät värit ja vaihtaa ikkunan värit.
+     * 
+     * @see ohjharjoitus.Varinarpoja#arvoVarit() 
+     */
+    public void vaihdaVarit(){
+        varit = varinArpoja.arvoVarit();
+        ikkuna.setBackground(varit.get(0));
+        tilanne.setForeground(varit.get(3));
+    }
+    
+    public ArrayList<Color> getVarit(){
+        return varit;
+    }
+    
+    /**
+     * Tyhjentää pelin elementtien listat.
+     */
+    public void tyhjennaListat(){
+        pommit.clear();
+        seuraajat.clear();
+        viivat.clear();
+        kohteet.clear();
+    }
+    
+    public void setNykyinenTaso(int x){
+        nykyinenTaso = x;
+    }
+    
+    public void setNykyinenPeli(String peli){
+        nykyinenPeli = peli;
+    }
+    
     /**
      * Kysyy käyttäjältä ladattavien tasojen tiedostonimeä dialogi-ikkunan kautta.
      * 
@@ -114,8 +145,8 @@ public class Strategiapeli implements Runnable {
             yhtPisteet.nollaaPisteet();
             tasonPisteet.nollaaPisteet();
         
-            nykyinenPeli = tasot;
-            nykyinenTaso = 1;
+            setNykyinenPeli(tasot);
+            setNykyinenTaso(1);
             alustaTaso(nykyinenPeli, nykyinenTaso);
         } else {
             JOptionPane.showMessageDialog(ikkuna, "File not found");
@@ -132,6 +163,21 @@ public class Strategiapeli implements Runnable {
     }
     
     /**
+     * Kertoo hiirelle missä kohtaa peliä ollaan.
+     * 
+     * @return lukukoodi tilanteelle
+     */
+    public int pelitilanne(){
+        if (tilanne.getText().equals("click to continue")){
+            return 0;
+        } else if(tilanne.getText().equals("Game Over")){
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+    
+    /**
      * Alustaa testitason tyhjentämällä pelin 
      * elementtien listat ja lataamalla uudet sisällöt,
      * päivittää tilanteen ja grafiikan
@@ -144,12 +190,9 @@ public class Strategiapeli implements Runnable {
      * 
      */
     public void alustaTestiTaso() {
-        pommit.clear();
-        kohteet.clear();
-        seuraajat.clear();
-        viivat.clear();
+        tyhjennaListat();
                 
-        tasonPisteet = new Pistelaskin(lataaja.lataaRaja("perustasot", 0));
+        tasonPisteet = new Pistelaskin();
         
         paivitaTilanne("click to begin");
         kohteet = lataaja.lataaUudetKohteet("perustasot", 0);
@@ -172,21 +215,22 @@ public class Strategiapeli implements Runnable {
      */
     public void alustaTaso(String tasot, int n) {
         if (n>lataaja.tasojenLkm(tasot) || n<0){
-            paivitaTilanne("nope.");
+            paivitaTilanne("Game Over");
             return;
         }
         
         //nollataan tilanne, alustetaan uusi kenttä
-        pommit.clear();
-        kohteet.clear();
-        seuraajat.clear();
-        viivat.clear();
+        tyhjennaListat();
         
-        tasonPisteet = new Pistelaskin(lataaja.lataaRaja(tasot, n));
+        tasonPisteet = new Pistelaskin();
+        nykyinenRaja = lataaja.lataaRaja(tasot, n);
         
         paivitaTilanne("click to begin");
         kohteet = lataaja.lataaUudetKohteet(tasot, n);
         seuraajat = lataaja.lataaUudetSeur(tasot, n);
+        
+        //arvotaan väriskeema
+        vaihdaVarit();
         grafiikka.repaint();
     }
         
@@ -229,13 +273,13 @@ public class Strategiapeli implements Runnable {
         if (x<0) x = 0;
         if (y>350) y = 350;
         if (y<0) y = 0;
-        //rajoitus käyttöön myöhemmin
-        //if (pommit.size()<taso.getRaja()){ 
-            pommit.add(new Pommi(x,y,100));
-        //    paivitaTilanne("press 'a' to detonate");  
-        //} else {
-        //    paivitaTilanne("cannot place further charges") 
-        //}
+ 
+        pommit.add(new Pommi(x,y,100));
+        
+        kaytetyt++;
+        if (kaytetyt>nykyinenRaja){
+            tasonPisteet.vahenna(1);
+        }
         laskeLiike();
     }
     
@@ -323,12 +367,10 @@ public class Strategiapeli implements Runnable {
      * 
      */
     public void laskeOsumat() {
-        //int osumat = 0; 
         for (Pommi p : pommit){
             for (Kohde k : kohteet){
                 int etaisyys = (int) Math.sqrt(Math.pow((p.getX()+p.getD()/2)-k.getX(), 2)+(Math.pow((p.getY()+p.getD()/2)-k.getY(), 2)));
                 if (etaisyys<=p.getD()/2){
-                    //osumat++;
                     k.tuhoa();
                 }
             }
@@ -337,12 +379,17 @@ public class Strategiapeli implements Runnable {
         if (tarkistaLapaisy()){
             tasonPisteet.lisaa(kohteet.size()/rajaytykset);
             rajaytykset = 0;
-            kombo = 0;
+            kaytetyt = 0;
             yhtPisteet.lisaa(tasonPisteet.getPisteet());
             paivitaTilanne("click to continue");
         }
     }
     
+    /**
+     * Kasvattaa tason numeroa, kutsuu uuden tason alustusta.
+     * 
+     * @see ohjharjoitus.Strategiapeli#alustaTaso(java.lang.String, int) 
+     */
     public void seuraavaTaso(){
         nykyinenTaso++;
         alustaTaso(nykyinenPeli, nykyinenTaso);

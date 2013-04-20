@@ -28,6 +28,17 @@ raja:
 666
 loppu
 Taso 1
+115
+175
+235
+175
+seuraajat:
+175
+175
+raja:
+2
+loppu
+Taso 2
 175
 200
 150
@@ -42,9 +53,9 @@ seuraajat:
 330
 12
 raja:
-99
+5
 loppu
-Taso 2
+Taso 3
 23
 300
 230
@@ -55,9 +66,9 @@ seuraajat:
 340
 34
 raja:
-99
+2
 loppu
-Taso 3
+Taso 4
 120
 20
 20
@@ -70,9 +81,9 @@ seuraajat:
 175
 175
 raja:
-99
+5
 loppu
-Taso 4
+Taso 5
 234
 54
 123
@@ -93,9 +104,9 @@ seuraajat:
 43
 109
 raja:
-99
+4
 loppu
-Taso 5
+Taso 6
 17
 38
 345
@@ -110,8 +121,8 @@ seuraajat:
 228
 304
 92
-1
+120
 raja:
-99
+4
 loppu
-6
+7
