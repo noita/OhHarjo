@@ -1,5 +1,5 @@
 
-package ohjharjoitus;
+package ohjharjoitus.kayttoliittyma;
 
 import java.util.*;
 import java.awt.*;
@@ -10,14 +10,13 @@ import java.awt.*;
  * @author O
  */
 public class Varinarpoja {
-    Strategiapeli peli;
     
-    public Varinarpoja(Strategiapeli peli){
-        this.peli = peli;
+    public Varinarpoja(){
+        
     }
     
     /**
-     * Arpoo väriskeeman satunnaisesti.
+     * Arpoo pelin väriskeeman.
      * 
      * @return ArrayList<Color>  värit sisältävä lista
      */

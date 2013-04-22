@@ -26,16 +26,16 @@ public class Grafiikka extends Canvas{
     /**
      * Piirtää pelin kohteet.
      * 
-     * @param g Grafiikka elementti
+     * @param g Grafiikkaelementti
      */
     public void paint(Graphics g){
         uudetVarit();
+        //this.setBackground(varit.get(0));
         g.setColor(varit.get(3));
-        
+                
         int tilanne = peli.pelitilanne();
         
         if (tilanne == 0){
-            //helvetin ruma!!!!
             g.drawString("stage cleared", 125, 70);
             g.drawString("stage score: " + peli.tasonPisteet.getPisteet(), 125, 90);
             g.drawString("total score: " + peli.yhtPisteet.getPisteet(), 125, 105);

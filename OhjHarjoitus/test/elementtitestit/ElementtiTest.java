@@ -1,12 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package elementtitestit;
 
 import ohjharjoitus.elementit.Kohde;
 import ohjharjoitus.elementit.Pommi;
 import ohjharjoitus.elementit.Seuraaja;
+import ohjharjoitus.elementit.Viiva;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,5 +57,14 @@ public class ElementtiTest {
         Kohde k = new Kohde(100,100);
         assertEquals(100, k.getX());
         assertEquals(100, k.getY());
+    }
+    
+    @Test
+    public void viivaAsettaaOikein(){
+        Viiva v = new Viiva(1,2,3,4);
+        assertEquals(1, v.getX1());
+        assertEquals(2, v.getY1());
+        assertEquals(3, v.getX2());
+        assertEquals(4, v.getY2());
     }
 }

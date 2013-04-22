@@ -40,7 +40,8 @@ public class HiirenKuuntelija implements MouseListener{
         if(tilanne == 0){
             peli.seuraavaTaso();
         } else if (tilanne == 1){
-            //ei mitn.
+            //Game Over
+            peli.naytaTulos();
         } else {
             //lisätään uusi elementti, päivitetään grafiikka
             peli.lisaaPommi(x, y);

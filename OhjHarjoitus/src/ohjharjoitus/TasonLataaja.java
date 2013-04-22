@@ -21,7 +21,7 @@ public class TasonLataaja {
     }
     
     /**
-     * Tarkistaa montako tasoa tiedosto määrittelee
+     * Tarkistaa montako tasoa tiedosto määrittelee.
      * 
      * @param tiedosto nimi tiedostolle, josta tasot ladataan
      * 
@@ -43,7 +43,7 @@ public class TasonLataaja {
     }
     
     /**
-     * Lataa halutun tason kohteet tiedostosta
+     * Lataa halutun tason kohteet tiedostosta.
      * 
      * @param tiedosto nimi tiedostolle, josta tasot ladataan
      * 
@@ -72,7 +72,7 @@ public class TasonLataaja {
     }
     
     /**
-     * Lataa halutun tason seuraajat tiedostosta
+     * Lataa halutun tason seuraajat tiedostosta.
      * 
      * @param tiedosto nimi tiedostolle, josta tasot ladataan
      * 
@@ -103,7 +103,15 @@ public class TasonLataaja {
         return seuraajia;
     }
     
-    
+    /**
+     * Hakee tiedostosta halutun tason pommien käytön rajoituksen.
+     * 
+     * @param tiedosto tasotiedoston nimi
+     * 
+     * @param monesko kyseessä olevan tason numero
+     * 
+     * @return tason rajoitus luku
+     */
     public int lataaRaja(String tiedosto, int monesko) {
         String sana = "whatev";
         int raja = 999;
@@ -122,6 +130,13 @@ public class TasonLataaja {
         return raja;
     }
     
+    /**
+     * Tarkistaa onko haluttu tiedosto olemassa.
+     * 
+     * @param tiedosto etsittävän tiedoston nimi
+     * 
+     * @return olemassaolon totuusarvo
+     */
     public boolean tarkistaOlemassaolo(String tiedosto){
         try{
             File tied = new File(tiedosto + ".txt");

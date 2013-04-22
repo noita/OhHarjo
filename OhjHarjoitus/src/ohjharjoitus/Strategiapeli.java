@@ -1,6 +1,7 @@
 
 package ohjharjoitus;
 
+import ohjharjoitus.kayttoliittyma.Varinarpoja;
 import ohjharjoitus.syotteet.ValikonKuuntelija;
 import ohjharjoitus.syotteet.NappisKuuntelija;
 import ohjharjoitus.syotteet.HiirenKuuntelija;
@@ -25,7 +26,7 @@ public class Strategiapeli implements Runnable {
     private NappisKuuntelija nappis = new NappisKuuntelija(this);
     private TasonLataaja lataaja = new TasonLataaja(this);
     private ArrayList<Color> varit= new ArrayList<Color>();
-    private Varinarpoja varinArpoja = new Varinarpoja(this);
+    private Varinarpoja varinArpoja = new Varinarpoja();
     private JLabel tilanne = new JLabel("click to begin");
     public Grafiikka grafiikka = new Grafiikka();
     public ArrayList<Kohde> kohteet = new ArrayList<Kohde>();
@@ -34,13 +35,29 @@ public class Strategiapeli implements Runnable {
     public ArrayList<Viiva> viivat = new ArrayList<Viiva>();
     public Pistelaskin yhtPisteet = new Pistelaskin();
     public Pistelaskin tasonPisteet = new Pistelaskin();
+    /**
+     * Nykyisen tason raja käytettäville pommeille.
+     */
     private int nykyinenRaja;
+    /**
+     * Nykyisen tason numero.
+     */
     private int nykyinenTaso;
+    /**
+     * Nykyisen pelitiedoston nimi.
+     */
     private String nykyinenPeli = "perustasot";
+    /**
+     * Tasossa käytettyjen räjäytysten lukumäärä.
+     */
     private int rajaytykset = 0;
+    /**
+     * Tasossa käytettyjen pommien lukumäärä.
+     */
     private int kaytetyt = 0;
     
     
+    @Override
     public void run() {
         ikkuna.setPreferredSize(new Dimension(350, 410));
         ikkuna.setResizable(false);
@@ -59,6 +76,11 @@ public class Strategiapeli implements Runnable {
         ikkuna.addKeyListener(nappis);
     }   
     
+    /**
+     * Lisää peli-ikkunaan objektit ja lataa ensimmäisen tason.
+     * 
+     * @see ohjharjoitus.Strategiapeli#alustaTaso(java.lang.String, int) 
+     */
     private void luoAlkutilanne() {
         Container pohja = ikkuna.getContentPane();
         pohja.setLayout(new BoxLayout(pohja, BoxLayout.Y_AXIS));
@@ -69,10 +91,13 @@ public class Strategiapeli implements Runnable {
         setNykyinenTaso(1);
         alustaTaso(nykyinenPeli, nykyinenTaso);
         
-        pohja.add(grafiikka);
         pohja.add(tilanne);
+        pohja.add(grafiikka);
     }
     
+    /**
+     * Luo ikkunaan valikon.
+     */
     private void luoValikko(){
         JMenuBar valikko = new JMenuBar();
         valikko.setBorderPainted(false);
@@ -154,7 +179,7 @@ public class Strategiapeli implements Runnable {
     }
     
     /**
-     * Päivittää pelitilanteen esittävän JLabelin
+     * Päivittää pelitilanteen esittävän JLabelin.
      * 
      * @param viesti päivitettävä tieto
      */
@@ -163,7 +188,7 @@ public class Strategiapeli implements Runnable {
     }
     
     /**
-     * Kertoo hiirelle missä kohtaa peliä ollaan.
+     * Kertoo hiirelle missä tilanteessa pelissä ollaan.
      * 
      * @return lukukoodi tilanteelle
      */
@@ -180,7 +205,7 @@ public class Strategiapeli implements Runnable {
     /**
      * Alustaa testitason tyhjentämällä pelin 
      * elementtien listat ja lataamalla uudet sisällöt,
-     * päivittää tilanteen ja grafiikan
+     * päivittää tilanteen ja grafiikan.
      * 
      * @see ohjharjoitus.Strategiapeli#paivitaTilanne(java.lang.String) 
      * 
@@ -203,7 +228,7 @@ public class Strategiapeli implements Runnable {
     /**
      * Alustaa uuden tason tyhjentämällä pelin 
      * elementtien listat ja lataamalla uudet sisällöt,
-     * päivittää tilanteen ja grafiikan
+     * päivittää tilanteen ja grafiikan.
      * 
      * @see ohjharjoitus.Strategiapeli#paivitaTilanne(java.lang.String)
      * 
@@ -216,6 +241,7 @@ public class Strategiapeli implements Runnable {
     public void alustaTaso(String tasot, int n) {
         if (n>lataaja.tasojenLkm(tasot) || n<0){
             paivitaTilanne("Game Over");
+            naytaTulos();
             return;
         }
         
@@ -236,7 +262,7 @@ public class Strategiapeli implements Runnable {
         
     /**
      * Tyhjentää kohdelistan, luo satunnaisia kohteita
-     * ja lisää nämä listaan
+     * ja lisää nämä listaan.
      * 
      * @param lkm luotavien kohteiden lukumäärä
      */
@@ -249,7 +275,7 @@ public class Strategiapeli implements Runnable {
     
     /**
      * Tyhjentää seuraajalistan, luo satunnaisia seuraajia
-     * ja lisää nämä listaan
+     * ja lisää nämä listaan.
      * 
      * @param lkm luotavien seuraajien lukumäärä
      */
@@ -261,7 +287,7 @@ public class Strategiapeli implements Runnable {
     }
     
     /**
-     * Luo ja lisää pommilistaan uuden pommin
+     * Luo ja lisää pommilistaan uuden pommin.
      * 
      * @param x lisättävän pommin x-koordinaatti
      * 
@@ -284,7 +310,7 @@ public class Strategiapeli implements Runnable {
     }
     
     /**
-     * Käy läpi seuraajien listan ja laskee sijainnin muutoksen näille
+     * Käy läpi seuraajien listan ja laskee sijainnin muutoksen näille.
      * 
      */
     public void laskeLiike() {
@@ -339,7 +365,7 @@ public class Strategiapeli implements Runnable {
     
     /**
      * Päivittää tilanteen riippuen pommilistan tilasta,
-     * kasvattaa käytettyjen räjäytysten määrää
+     * kasvattaa käytettyjen räjäytysten määrää.
      * 
      * @see ohjharjoitus.Strategiapeli#paivitaTilanne(java.lang.String)
      * 
@@ -359,7 +385,7 @@ public class Strategiapeli implements Runnable {
     
     /**
      * Käy läpi pommilistan ja laskee osumat kohteisiin
-     * mikäli taso läpäistään, laskee pisteet ja päivittää tilanteen
+     * mikäli taso läpäistään, laskee pisteet ja päivittää tilanteen.
      * 
      * @see ohjharjoitus.Strategiapeli#paivitaTilanne(java.lang.String) 
      * 
@@ -396,7 +422,7 @@ public class Strategiapeli implements Runnable {
     }
         
     /**
-     * Tarkistaa onko kaikki tason kohteet tuhottu
+     * Tarkistaa onko kaikki tason kohteet tuhottu.
      * 
      * @return läpäisyn totuusarvo
      */
@@ -410,7 +436,20 @@ public class Strategiapeli implements Runnable {
     }
     
     /**
-     * Sulkee peli-ikkunan
+     * Näyttää loppuneen pelin tuloksen, kysyy aloitetaanko uusi peli.
+     */
+    public void naytaTulos(){
+        int x = JOptionPane.showConfirmDialog(ikkuna, "Your score: " + yhtPisteet.pisteet + "\nStart new game?", "Game Over", 2);
+        if (x == 0){
+            yhtPisteet.nollaaPisteet();
+            setNykyinenTaso(1);
+            setNykyinenPeli("perustasot");
+            alustaTaso("perustasot", 1);
+        }
+    }
+    
+    /**
+     * Sulkee peli-ikkunan ja tätä myötä koko pelin.
      * 
      */
     public void suljePeli() {

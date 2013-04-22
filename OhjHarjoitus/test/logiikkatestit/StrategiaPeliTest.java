@@ -1,3 +1,5 @@
+package logiikkatestit;
+
 
 
 import ohjharjoitus.elementit.Kohde;
@@ -41,6 +43,8 @@ public class StrategiaPeliTest {
     @Test
     public void alustetaanOikeaMaaraKohteita(){
         peli.alustaTaso("perustasot", 1);
+        assertEquals(2, peli.kohteet.size());
+        peli.alustaTaso("perustasot", 2);
         assertEquals(4, peli.kohteet.size());
     }
     
@@ -164,6 +168,7 @@ public class StrategiaPeliTest {
     @Test
     public void liianKorkeaTaso(){
         peli.alustaTaso("perustasot", 99);
+        
         assertEquals(1, peli.pelitilanne());
     }
     
