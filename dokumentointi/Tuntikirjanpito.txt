@@ -1,0 +1,109 @@
+Tuntikirjanpito, ohjelmoinnin harjoitustyö, periodi IV 2013
+
+7.3.13
+Kirjanpito aloitettu
+
+10.3.13
+Noin 1.5 tuntia työskentelyä:
+	- luokkien ja yhteyksien suunnittelua.
+	- googlailua Javan grafiikka luokkien ominaisuuksista.
+
+14.3.13
+2 tuntia työskentelyä:
+	- piirretty luonnoksia luokkakaaviosta.
+	- suunniteltu metodeja kuhunkin luokkaan.
+	- koodattu perusta; hieman pelin logiikkaa tärkeimmille komponenteille.
+	- luokat komponenteille, hiiren käsittelylle ja grafiikalle luotu.
+	- ensimmäiset palat grafiikkaa koodattu.
+	- ensimmäisiin ongelmiin törmätty: grafiikka ei päivity oikein.
+
+15.3.13
+Noin 2 tuntia työskentelyä:
+	- grafiikan päivittymisongelma korjattu.
+	- lisätty luokat ja metodit valikoille, vielä melko tyhjiä.
+
+18.3.13
+Noin 1.5 tuntia työskentelyä
+	- testejä lisätty.
+	- luokkakaaviota selvennetty.
+	- pieniä muutoksia koodiin, pääasiassa testausta varten.
+
+22.3.13
+Noin tunti työskentelyä
+	- näppäimistön käsittely lisätty.
+	- lisätty räjähdysten laskenta.
+	- lisätty tarvittavat muutokset grafiikkaan.
+
+23.3.13
+Noin 1.5 tuntia työskentelyä
+	- "seuraajat" lisätty.
+	- tarvittavat grafiikan muutokset.
+	- seuraajien toiminnallisuus; liike ja pommien poisto lisätty.
+	- lisättyjä elementtejä koskevia testejä lisätty.
+
+26.3.13
+Noin tunti työskentelyä.
+	- projektin rakennetta siistitty.
+	- päivitetty luokkakaavio piirretty puhtaaksi.
+	- lisätty pisteenlaskua (säännöt vielä epäselvät).
+
+29.3.13
+Noin 2 tuntia työskentelyä.
+	- koodia siistitty, uusia metodeja vanhoihin luokkiin.
+	- pisteenlasku ja tuloksen esitys lisätty, laskua pitää vielä hioa.
+	- graafisia muutoksia.
+	- tasosta toiseen siirtyminen (satunnaisilla tasoila).
+
+30.3.13
+Noin 1.5 tuntia työskentelyä.
+	- lisätty tasojen lataaminen tekstitiedostosta.
+
+31.3.13
+Noin 1.5 tuntia työskentelyä.
+	- tasosta toiseen siirtyminen.
+	- testejä tason lataukseen liittyen, muutoksia vanhoihin.
+	- tasojenlatausluokkaa muokattu.
+
+4.4.13
+Noin puoli tuntia työskentelyä.
+	- testejä lisätty.
+	- korjauksia pelin kulkuun tasosta toiseen.
+
+6.4.13
+Noin tunti työskentelyä.
+	- JavaDoc aloitettu.
+	- testejä lisätty.
+
+9.4.13
+Noin 3.5 tuntia työskentelyä.
+	- JavaDocia jatkettu.
+	- Tasojen latausta muokattu.
+	- Erikoistasojen lataus valikosta.
+	- Uusia tasoja määritelty.
+	- Lisätty graafisia elementtejä.
+	- Dokumentointia päivitetty.
+
+14.4.13
+Noin tunti työskentelyä.
+	- Korjauksia ja siistimistä koodikatselmoinnin pohjalta.
+	- JavaDocia päivitetty.
+
+16.4.13
+Noin tunti työskentelyä.
+	- Väriskeeman vaihto lisätty.
+
+18.4.13
+Noin tunti työskentelyä.
+	- Testejä lisätty ja korjattu.
+	- Värejä lisätty.
+	- Korjauksia koodikatselmoinnin pohjalta.
+
+21.4.13
+Noin tunti työskentelyä.
+	- Lisätty testejä.
+	- Korjauksia rakenteeseen.
+	- Lisätty lopputuloksen esitys.
+
+22.4.13
+Noin puoli tuntia työskentelyä.
+	- Korjattu graafisia ongelmia, jotka ilmenivä laitoksen koneilla.
