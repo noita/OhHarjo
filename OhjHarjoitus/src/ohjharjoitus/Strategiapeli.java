@@ -193,7 +193,7 @@ public class Strategiapeli implements Runnable {
      * @return lukukoodi tilanteelle
      */
     public int pelitilanne(){
-        if (tilanne.getText().equals("click to continue")){
+        if (tilanne.getText().equals("click to continue, press 'r' to retry")){
             return 0;
         } else if(tilanne.getText().equals("Game Over")){
             return 1;
@@ -407,7 +407,7 @@ public class Strategiapeli implements Runnable {
             rajaytykset = 0;
             kaytetyt = 0;
             yhtPisteet.lisaa(tasonPisteet.getPisteet());
-            paivitaTilanne("click to continue");
+            paivitaTilanne("click to continue, press 'r' to retry");
         }
     }
     
@@ -418,6 +418,16 @@ public class Strategiapeli implements Runnable {
      */
     public void seuraavaTaso(){
         nykyinenTaso++;
+        alustaTaso(nykyinenPeli, nykyinenTaso);
+    }
+    
+    /**
+     * Lataa viimeisimmän tason uudestaan pelattavaksi.
+     * 
+     * @see ohjharjoitus.Strategiapeli#alustaTaso(java.lang.String, int) 
+     */
+    public void toistaTaso(){
+        yhtPisteet.vahenna(tasonPisteet.getPisteet());
         alustaTaso(nykyinenPeli, nykyinenTaso);
     }
         

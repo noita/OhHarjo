@@ -28,6 +28,9 @@ public class NappisKuuntelija implements KeyListener{
         if (merkki == 'a'){
             peli.rajayta();
         }
+        if (merkki == 'r' && peli.pelitilanne() == 0){
+            peli.toistaTaso();
+        }
     }
 
     @Override

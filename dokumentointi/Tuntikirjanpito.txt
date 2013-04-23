@@ -105,5 +105,6 @@ Noin tunti työskentelyä.
 	- Lisätty lopputuloksen esitys.
 
 22.4.13
-Noin puoli tuntia työskentelyä.
+Noin tunti työskentelyä.
 	- Korjattu graafisia ongelmia, jotka ilmenivä laitoksen koneilla.
+	- Lisätty tason uusinta.
