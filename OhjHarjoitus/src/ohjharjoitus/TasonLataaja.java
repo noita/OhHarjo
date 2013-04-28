@@ -37,7 +37,7 @@ public class TasonLataaja {
         int lkm;
         String rivi = "-1";
         try {
-            Scanner luku = new Scanner(new File(tiedosto + ".txt"));
+            Scanner luku = new Scanner(new File("tasot/" + tiedosto + ".txt"));
             while (luku.hasNextLine()){
                 rivi = luku.nextLine();
             }
@@ -61,7 +61,7 @@ public class TasonLataaja {
         kohteita.clear();
         String sana = "";
         try {
-            Scanner luku = new Scanner(new File(tiedosto + ".txt"));
+            Scanner luku = new Scanner(new File("tasot/" + tiedosto + ".txt"));
             while (!sana.equals("Taso " + monesko)){
                 sana = luku.nextLine();
             }
@@ -90,7 +90,7 @@ public class TasonLataaja {
         seuraajia.clear();
         String sana = "jtn.";
         try {
-            Scanner luku = new Scanner(new File(tiedosto + ".txt"));
+            Scanner luku = new Scanner(new File("tasot/" + tiedosto + ".txt"));
             while (!sana.equals("Taso " + monesko)){
                 sana = luku.nextLine();
             }
@@ -122,7 +122,7 @@ public class TasonLataaja {
         String sana = "whatev";
         int raja;
         try {
-            Scanner luku = new Scanner(new File(tiedosto + ".txt"));
+            Scanner luku = new Scanner(new File("tasot/" + tiedosto + ".txt"));
             while (!sana.equals("Taso " + monesko)){
                 sana = luku.nextLine();
             }
@@ -145,7 +145,7 @@ public class TasonLataaja {
      */
     public boolean tarkistaOlemassaolo(String tiedosto){
         try{
-            File tied = new File(tiedosto + ".txt");
+            File tied = new File("tasot/" + tiedosto + ".txt");
             return tied.exists();
         } catch (Exception e){
             return false;
