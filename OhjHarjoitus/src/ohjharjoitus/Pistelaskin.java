@@ -7,18 +7,26 @@ package ohjharjoitus;
  * @author O
  */
 public class Pistelaskin {
+    /**
+     * Laskimen pisteluku.
+     */
     int pisteet;
     
     public Pistelaskin() {
         pisteet = 0;
     }
     
-    //negatiiviset yht. pisteet ovat tarkoituksella mahdollisia!
-    //case: not a bug; a feature
+    /**
+     * Vähentää pisteitä.
+     * @param x  vähennys
+     */
     public void vahenna(int x) {
         pisteet -= x;
     }
-    
+    /**
+     * Lisää pisteitä.
+     * @param x lisäys
+     */
     public void lisaa(int x) {
         pisteet += x;
     }
@@ -26,7 +34,9 @@ public class Pistelaskin {
     public int getPisteet() {
         return pisteet;
     }
-    
+    /**
+     * Nollaa laskimen pisteet.
+     */
     public void nollaaPisteet() {
         pisteet = 0;
     }

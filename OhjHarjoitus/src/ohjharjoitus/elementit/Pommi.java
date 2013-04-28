@@ -1,11 +1,14 @@
 
 package ohjharjoitus.elementit;
 
-
+/**
+ * Määrittelee pommielementit.
+ * @author O
+ */
 public class Pommi {
     int sijaintiX;
     int sijaintiY;
-    int lavistaja; //räjähdyksen koko
+    int lavistaja;
     
     
     public Pommi(int x, int y, int z){

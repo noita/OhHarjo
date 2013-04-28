@@ -24,6 +24,7 @@ public class HiirenKuuntelija implements MouseListener{
      * 
      * @param e hiiritapahtuma
      */
+    @Override
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();

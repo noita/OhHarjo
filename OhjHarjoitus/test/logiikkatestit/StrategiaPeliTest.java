@@ -168,13 +168,14 @@ public class StrategiaPeliTest {
     @Test
     public void liianKorkeaTaso(){
         peli.alustaTaso("perustasot", 99);
-        
+        //cancel
         assertEquals(1, peli.pelitilanne());
     }
     
     @Test
     public void negTasonumero(){
         peli.alustaTaso("perustasot", -1);
+        //cancel
         assertEquals(1, peli.pelitilanne());
     }
     

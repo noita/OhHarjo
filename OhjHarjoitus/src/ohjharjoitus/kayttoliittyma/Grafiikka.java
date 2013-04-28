@@ -30,7 +30,7 @@ public class Grafiikka extends Canvas{
      */
     public void paint(Graphics g){
         uudetVarit();
-        //this.setBackground(varit.get(0));
+        this.setBackground(varit.get(0));
         g.setColor(varit.get(3));
                 
         int tilanne = peli.pelitilanne();

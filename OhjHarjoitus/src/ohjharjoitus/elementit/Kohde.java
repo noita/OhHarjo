@@ -1,9 +1,15 @@
 
 package ohjharjoitus.elementit;
-
+/**
+ * Määrittelee kohde-elementit.
+ * @author O
+ */
 public class Kohde {
     int sijaintiX;
     int sijaintiY;
+    /**
+     * Tieto siitä, onko kohde jo tuhottu.
+     */
     boolean tuhottu = false;
     
     public Kohde(int x, int y){
@@ -30,7 +36,9 @@ public class Kohde {
     public boolean tuhottu() {
         return tuhottu;
     }
-    
+    /**
+     * Muuttaa tuhottu-muuttujan true:ksi.
+     */
     public void tuhoa() {
         tuhottu = true;
     }

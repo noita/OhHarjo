@@ -1,7 +1,10 @@
 
 package ohjharjoitus.elementit;
 
-
+/**
+ * Määrittelee seuraajaelementit.
+ * @author O
+ */
 public class Seuraaja {
     int sijaintiX;
     int sijaintiY;

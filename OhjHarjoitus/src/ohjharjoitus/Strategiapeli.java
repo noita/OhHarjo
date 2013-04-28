@@ -24,16 +24,49 @@ import java.util.*;
 public class Strategiapeli implements Runnable {
     private JFrame ikkuna = new JFrame("A Game");
     private NappisKuuntelija nappis = new NappisKuuntelija(this);
+    /**
+     * Tasojen lataaja elementti.
+     */
     private TasonLataaja lataaja = new TasonLataaja(this);
+    /**
+     * Lista grafiikassa käytettävistä väreistä.
+     */
     private ArrayList<Color> varit= new ArrayList<Color>();
+    /**
+     * Pelin väriskeeman arpoja.
+     */
     private Varinarpoja varinArpoja = new Varinarpoja();
+    /**
+     * Pelitilanteen ilmoitta JLabel.
+     */
     private JLabel tilanne = new JLabel("click to begin");
+    /**
+     * Piirrosalusta pelitilanteelle.
+     */
     public Grafiikka grafiikka = new Grafiikka();
+    /**
+     * Lista nykyisen tason kohteista.
+     */
     public ArrayList<Kohde> kohteet = new ArrayList<Kohde>();
+    /**
+     * Lista asetetuista pommeista.
+     */
     public ArrayList<Pommi> pommit = new ArrayList<Pommi>();
+    /**
+     * lista nykyisen tason seuraajista.
+     */
     public ArrayList<Seuraaja> seuraajat = new ArrayList<Seuraaja>();
+    /**
+     * Lista nykyisen tilanteen viivoista.
+     */
     public ArrayList<Viiva> viivat = new ArrayList<Viiva>();
+    /**
+     * Pistelaskin pelin kokonaispisteille.
+     */
     public Pistelaskin yhtPisteet = new Pistelaskin();
+    /**
+     * Pistelaskin parhaillaan pelattavalle tasolle.
+     */
     public Pistelaskin tasonPisteet = new Pistelaskin();
     /**
      * Nykyisen tason raja käytettäville pommeille.
@@ -126,7 +159,7 @@ public class Strategiapeli implements Runnable {
     /**
      * Hakee uudet käyttöliittymässä käytettävät värit ja vaihtaa ikkunan värit.
      * 
-     * @see ohjharjoitus.Varinarpoja#arvoVarit() 
+     * @see ohjharjoitus.kayttoliittyma.Varinarpoja#arvoVarit() 
      */
     public void vaihdaVarit(){
         varit = varinArpoja.arvoVarit();
@@ -460,7 +493,6 @@ public class Strategiapeli implements Runnable {
     
     /**
      * Sulkee peli-ikkunan ja tätä myötä koko pelin.
-     * 
      */
     public void suljePeli() {
         ikkuna.removeKeyListener(nappis);

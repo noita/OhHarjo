@@ -17,12 +17,14 @@ public class NappisKuuntelija implements KeyListener{
     }
     
     /**
-     * Räjäyttää pommit mikäli painettu näppäin on 'a'.
+     * Räjäyttää pommit mikäli painettu näppäin on 'a' ja 
+     * uusii tason, jos painetttu näppäin on 'r'.
      * 
      * @see ohjharjoitus.Strategiapeli#rajayta() 
      * 
      * @param ke näppäimistötapahtuma
      */
+    @Override
     public void keyPressed(KeyEvent ke) {
         char merkki = ke.getKeyChar();
         if (merkki == 'a'){

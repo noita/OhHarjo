@@ -13,7 +13,13 @@ import ohjharjoitus.elementit.Seuraaja;
  */
 public class TasonLataaja {
     Strategiapeli peli;
+    /**
+     * Lista kohteista.
+     */
     ArrayList<Kohde> kohteita = new ArrayList<Kohde>();
+    /**
+     * Lista Seuraajista.
+     */
     ArrayList<Seuraaja> seuraajia = new ArrayList<Seuraaja>();
     
     public TasonLataaja(Strategiapeli p) {
@@ -28,7 +34,7 @@ public class TasonLataaja {
      * @return tasojen lukumäärä tiedostossa
      */
     public int tasojenLkm(String tiedosto) {
-        int lkm = -1;
+        int lkm;
         String rivi = "-1";
         try {
             Scanner luku = new Scanner(new File(tiedosto + ".txt"));
@@ -37,7 +43,7 @@ public class TasonLataaja {
             }
             lkm = Integer.parseInt(rivi);
         } catch (Exception e){
-            //System.out.println("joku kämmi; lkm: " + e.toString());
+            return 0;
         }
         return lkm-1;
     }
@@ -110,11 +116,11 @@ public class TasonLataaja {
      * 
      * @param monesko kyseessä olevan tason numero
      * 
-     * @return tason rajoitus luku
+     * @return tason rajoitusluku
      */
     public int lataaRaja(String tiedosto, int monesko) {
         String sana = "whatev";
-        int raja = 999;
+        int raja;
         try {
             Scanner luku = new Scanner(new File(tiedosto + ".txt"));
             while (!sana.equals("Taso " + monesko)){
@@ -125,7 +131,7 @@ public class TasonLataaja {
             }
             raja = luku.nextInt();
         } catch (Exception e){
-            //System.out.println("joku kämmi; raja: " + e.toString());
+            return 0;
         }
         return raja;
     }

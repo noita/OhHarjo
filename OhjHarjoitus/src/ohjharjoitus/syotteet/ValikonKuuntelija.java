@@ -12,6 +12,7 @@ public class ValikonKuuntelija implements ActionListener{
         this.peli = peli;
     }
     
+    @Override
     public void actionPerformed(ActionEvent e){
         String valinta = ((JMenuItem)e.getSource()).getText();
         if (valinta.equals("Quit")){
