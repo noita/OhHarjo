@@ -1,9 +1,12 @@
-Aihe: Strategiapeli Toteutetaan 2D-peli, jossa pelaaja(1) sijoittaa tasolle "räjähteitä", yrittäen näillä tuhota tietyt kohteet samalla varoen tuhoamasta toisia tai osumasta näihin. Lisätavoitteena on käyttää mahdolisimman vähän/rajoitettu määrä räjähteitä. Kohteet yms. tason elementit reagoivat eri tavoin pelaajan asettamiin räjähteisiin. Toteutetaan useita tasoja, mahdollisesti myös satunnaisesti generoituja. 
+Aihe: Strategiapeli Toteutetaan 2D-peli, jossa pelaaja(1) sijoittaa tasolle "räjähteitä", yrittäen näillä tuhota tietyt kohteet samalla varoen toisia. Lisätavoitteena on käyttää mahdollisimman vähän/rajoitettu määrä räjähteitä. Kohteet yms. tason elementit reagoivat eri tavoin pelaajan asettamiin räjähteisiin. Toteutetaan useita tasoja, mahdollisesti myös satunnaisesti generoituja. 
+Tiedosto "Screenshot.png" on kuva pelistä sellaisena kuin sen tulisi näyttää. Ilmeisesti layout vaihtelee käyttöjärjestelmien välillä.
+
 Käyttäjät: Pelaaja.
+
 Käyttäjän toiminnot:
 - Uuden pelin aloittaminen.
 - "Räjähteiden" asettaminen.
 - Näiden räjäyttäminen.
-- Pelin tulosten tarkkailu.
 - Pelin lopettaminen.
--Tiettyjen tasojen lataaminen.
+- Tiettyjen tasojen lataaminen.
+- Pelatun tason uusiminen.

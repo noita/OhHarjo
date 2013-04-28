@@ -1,0 +1,11 @@
+Pelin kulku + säännöt:
+
+Peli alkaa käynnistäessä perustasosta 1.
+Pelaajan tavoitteena on tuhota pieninä ympyröinä kuvatut kohteet.
+Pommeja asetetaan hiirellä klikkaamalla ja ne tuhoavat kaikki sisällään olevat kohteet. Asetetut pommit räjäytetään 'a'-näppäimellä.
+Suuremmat ympyrät, seuraajat, pyrkivät poistamaan pelaajan asettamat pommit ennen kuin ne räjäytetään.
+Kun kaikki tason kohteet on tuhottu, siirrytään seuraavaan tasoon.
+Pelatun tason voi myös uusia painamalla 'r'.
+Pisteitä saa sitä enemmän, mitä vähemmän pommeja ja räjäytyksiä on käyttänyt. Raja käytetyille pommeille riippuu tasosta. Seuraajien poistamista pommeista menettää pisteitä.
+
+Valikosta käsin pelaaja voi aloittaa uuden pelin perustasosta 1, tai ladata erikoistason antamalla tämän tiedostonimen.

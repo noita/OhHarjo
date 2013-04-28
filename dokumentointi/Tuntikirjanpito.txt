@@ -108,3 +108,14 @@ Noin tunti työskentelyä.
 Noin tunti työskentelyä.
 	- Korjattu graafisia ongelmia, jotka ilmenivä laitoksen koneilla.
 	- Lisätty tason uusinta.
+
+26.4.13
+Noin tunti työskentelyä.
+	- Testejä lisätty.
+	- JavaDocin viimeistelyä.
+	- Käyttöohjeet kirjoitettu.
+
+28.4.13
+Noin 1.5 tuntia työskentelyä.
+	- Dokumentoinnin viimeistely.
+	- Viimeiset testaukset yms.
